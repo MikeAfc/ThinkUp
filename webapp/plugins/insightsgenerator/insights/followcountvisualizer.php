@@ -43,7 +43,7 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
         200 => "That's how many riders fit in a New York City subway car.",
         360 => "That's how many singers are in the Mormon Tabernacle Choir!",
         400 => "That's how many passengers fill up a 747.",
-        510 => "That's more people than saw Prince's first solo performance.",
+        560 => "That's how many high school students can sit on 10 yellow school buses.",
         600 => "That's the population of Eminence, Missouri.",
         12500 => "%username's followers could fill up Wembley Arena.",
         36000 => "That's how many people ran the 2014 Boston Marathon.",
@@ -70,9 +70,9 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
         ),
         115 => array(
             'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/stones.jpg',
-            'alt_text' => 'Rolling Stones',
-            'credit' => 'Photo: Arnaud Abadie',
-            'img_link' => 'https://www.flickr.com/photos/arnaudabadie/8674413125',
+            'alt_text' => 'Crowd at a concert',
+            'credit' => 'Photo: Chris',
+            'img_link' => 'https://www.flickr.com/photos/cr01/7392740268/',
         ),
         200 => array(
             'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/subway.jpg',
@@ -90,7 +90,19 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
             'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/747.jpg',
             'alt_text' => '747',
             'credit' => 'Photo: Aero Icarus',
-            'img_link' => 'https://www.flickr.com/photos/aero_icarus/4707805048/in/photostream/',
+            'img_link' => 'https://www.flickr.com/photos/aero_icarus/4707805048/',
+        ),
+        560 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/buses.jpg',
+            'alt_text' => 'Yellow school buses',
+            'credit' => 'Photo: dhendrix73',
+            'img_link' => 'https://www.flickr.com/photos/dhendrix/6906652333/',
+        ),
+        12500 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/wembley.jpg',
+            'alt_text' => 'Crowd at Wembley Arena',
+            'credit' => 'Photo: wonker',
+            'img_link' => 'https://www.flickr.com/photos/94056408@N00/1669797376',
         )
     );
 

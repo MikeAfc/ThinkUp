@@ -184,7 +184,7 @@ class TestOfFollowCountVisualizerInsight extends ThinkUpInsightUnitTestCase {
         $this->assertEqual($result->related_data['hero_image']['url'],
             'https://www.thinkup.com/assets/images/insights/2014-05/stones.jpg');
         $this->assertEqual($result->related_data['hero_image']['img_link'],
-            'https://www.flickr.com/photos/arnaudabadie/8674413125');
+            'https://www.flickr.com/photos/cr01/7392740268/');
 
         $baseline_dao = DAOFactory::getDAO('InsightBaselineDAO');
         $latest = $baseline_dao->getMostRecentInsightBaseline('follower_vis_last_run', $this->instance->id);
@@ -255,12 +255,60 @@ class TestOfFollowCountVisualizerInsight extends ThinkUpInsightUnitTestCase {
         $this->assertEqual($result->related_data['hero_image']['url'],
             'https://www.thinkup.com/assets/images/insights/2014-05/747.jpg');
         $this->assertEqual($result->related_data['hero_image']['img_link'],
-            'https://www.flickr.com/photos/aero_icarus/4707805048/in/photostream/');
+            'https://www.flickr.com/photos/aero_icarus/4707805048/');
 
         $baseline_dao = DAOFactory::getDAO('InsightBaselineDAO');
         $latest = $baseline_dao->getMostRecentInsightBaseline('follower_vis_last_run', $this->instance->id);
         $this->assertNotNull($latest);
         $this->assertEqual($latest->value, 400);
+    }
+
+    public function testJustPassed560() {
+        TimeHelper::setTime(1);
+        $insight_plugin = new FollowCountVisualizerInsight();
+        $insight_plugin->generateInsight($this->instance, $this->makeUser(565), array(), 1);
+
+        $insight_dao = DAOFactory::getDAO('InsightDAO');
+        $result = $insight_dao->getInsight('follow_count_visualizer', $this->instance->id, date('Y-m-d'));
+        $this->debug($this->getRenderedInsightInHTML($result));
+
+        $this->assertNotNull($result);
+        $this->assertEqual($result->headline, 'More than 560 people are following @mario.');
+        $this->assertEqual($result->text, "That's how many high school students can sit on 10 yellow school buses.");
+        $this->assertNotNull($result->related_data['hero_image']);
+        $this->assertEqual($result->related_data['hero_image']['url'],
+            'https://www.thinkup.com/assets/images/insights/2014-05/buses.jpg');
+        $this->assertEqual($result->related_data['hero_image']['img_link'],
+            'https://www.flickr.com/photos/dhendrix/6906652333/');
+
+        $baseline_dao = DAOFactory::getDAO('InsightBaselineDAO');
+        $latest = $baseline_dao->getMostRecentInsightBaseline('follower_vis_last_run', $this->instance->id);
+        $this->assertNotNull($latest);
+        $this->assertEqual($latest->value, 560);
+    }
+
+    public function testJustPassed12500() {
+        TimeHelper::setTime(1);
+        $insight_plugin = new FollowCountVisualizerInsight();
+        $insight_plugin->generateInsight($this->instance, $this->makeUser(12600), array(), 1);
+
+        $insight_dao = DAOFactory::getDAO('InsightDAO');
+        $result = $insight_dao->getInsight('follow_count_visualizer', $this->instance->id, date('Y-m-d'));
+        $this->debug($this->getRenderedInsightInHTML($result));
+
+        $this->assertNotNull($result);
+        $this->assertEqual($result->headline, 'More than 12,500 people are following @mario.');
+        $this->assertEqual($result->text, "@mario's followers could fill up Wembley Arena.");
+        $this->assertNotNull($result->related_data['hero_image']);
+        $this->assertEqual($result->related_data['hero_image']['url'],
+            'https://www.thinkup.com/assets/images/insights/2014-05/wembley.jpg');
+        $this->assertEqual($result->related_data['hero_image']['img_link'],
+            'https://www.flickr.com/photos/94056408@N00/1669797376');
+
+        $baseline_dao = DAOFactory::getDAO('InsightBaselineDAO');
+        $latest = $baseline_dao->getMostRecentInsightBaseline('follower_vis_last_run', $this->instance->id);
+        $this->assertNotNull($latest);
+        $this->assertEqual($latest->value, 12500);
     }
 
     public function testWithExistingCurrentBaseline() {
