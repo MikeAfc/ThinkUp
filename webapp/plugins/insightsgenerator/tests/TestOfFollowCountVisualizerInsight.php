@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with ThinkUp.  If not, see
  * <http://www.gnu.org/licenses/>.
  *
- * Test for FollowCountViusalizer class.
+ * Test of FollowCountVisualizerInsight
  *
  * @license http://www.gnu.org/licenses/gpl.html
  * @copyright 2014 Chris Moyer
@@ -207,16 +207,19 @@ class TestOfFollowCountVisualizerInsight extends ThinkUpUnitTestCase {
         $this->assertEqual($latest->value, 50000);
     }
 
+    /**
+     * Create a test user.
+     * @param  int $num_followers
+     * @return User
+     */
     private function makeUser($num_followers) {
         $user = new User();
         $user->username = $this->insight->network_username;
         $user->full_name = "Mario Nintendo";
         $user->user_id = 999;
         $user->description = "It's me, Mario!";
-        $user->description = "It's me, Mario!";
         $user->verified = 1;
         $user->follower_count = $num_followers;
         return $user;
     }
-
 }
