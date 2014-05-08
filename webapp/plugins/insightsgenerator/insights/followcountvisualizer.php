@@ -39,7 +39,7 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
      */
     private $milestones = array(
         56 => "That's how many high school students can sit on a yellow school bus.",
-        115 => "That's how many people saw the Rolling Stones' first live performance.",
+        115 => "That's how many fans saw the Rolling Stones' first live performance.",
         200 => "That's how many riders fit in a New York City subway car.",
         360 => "That's how many singers are in the Mormon Tabernacle Choir!",
         400 => "That's how many passengers fill up a 747.",
@@ -65,9 +65,33 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
         56 => array(
             'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/bus.jpg',
             'alt_text' => 'Yellow school bus',
-            'credit' => 'Photo: Credit TBD',
-            'img_link' => 'http://example.com/tbd',
+            'credit' => 'Photo: Ivy Dawned',
+            'img_link' => 'https://www.flickr.com/photos/ivydawned/5460058051',
         ),
+        115 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/stones.jpg',
+            'alt_text' => 'Rolling Stones',
+            'credit' => 'Photo: Arnaud Abadie',
+            'img_link' => 'https://www.flickr.com/photos/arnaudabadie/8674413125',
+        ),
+        200 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/subway.jpg',
+            'alt_text' => 'New York City subway car',
+            'credit' => 'Photo: Julian Dunn',
+            'img_link' => 'https://www.flickr.com/photos/juliandunn/6920197196',
+        ),
+        360 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/choir.jpg',
+            'alt_text' => 'Mormon Tabernacle Choir',
+            'credit' => '',
+            'img_link' => '',
+        ),
+        400 => array(
+            'url' => 'https://www.thinkup.com/assets/images/insights/2014-05/747.jpg',
+            'alt_text' => '747',
+            'credit' => 'Photo: Aero Icarus',
+            'img_link' => 'https://www.flickr.com/photos/aero_icarus/4707805048/in/photostream/',
+        )
     );
 
     public function generateInsight(Instance $instance, User $user, $last_week_of_posts, $number_days) {
@@ -94,7 +118,7 @@ class FollowCountVisualizerInsight extends InsightPluginParent implements Insigh
                     $insight->instance_id = $instance->id;
                     $insight->date = $this->insight_date;
                     $insight->filename = basename(__FILE__, ".php");
-                    $insight->emphasis = Insight::EMPHASIS_LOW;
+                    $insight->emphasis = Insight::EMPHASIS_HIGH;
 
                     if ($user->follower_count == $met_milestone) {
                         $headlines = array(
